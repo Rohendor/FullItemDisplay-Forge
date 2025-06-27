@@ -1,7 +1,7 @@
 {
-  "id": "full-item-display-forge",
-  "title": "Full Item Display-Forge",
-  "version": "0.0.0",
+  "id": "full-item-display",
+  "title": "Full Item Display",
+  "version": "0.1.1",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
@@ -15,6 +15,13 @@
 		"minimum": "4.0.0",
 		"verified": "4.6.4"
 		}
+      }
+    ],
+    "recommends": [
+      {
+        "id": "dice-so-nice",
+        "type": "module",
+        "compatibility": {}
       }
     ]
   },
