@@ -12,14 +12,14 @@ Hooks.on('init', async () => {
   
   try {
     // Import all dependencies first
-    Container = (await import('/systems/custom-system-builder/module/sheets/components/Container.js')).default;
+    Container = (await import('../../../../modules/sheets/components/Container.js')).default;
     
-    const utils = await import('/systems/custom-system-builder/module/utils.js');
+    const utils = await import('../../../../modules/utils.js');
     castToPrimitive = utils.castToPrimitive;
     
-    Formula = (await import('/systems/custom-system-builder/module/formulas/Formula.js')).default;
+    Formula = (await import('../../../../modules/formulas/Formula.js')).default;
     
-    const itemModule = await import('/systems/custom-system-builder/module/documents/item.js');
+    const itemModule = await import('../../../../modules/documents/item.js');
     CustomItem = itemModule.CustomItem;
     
     console.log('[FullItemDisplay] All dependencies imported successfully');
