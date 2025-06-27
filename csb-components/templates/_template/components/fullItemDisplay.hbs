@@ -1,0 +1,93 @@
+{{!-- templates/_template/components/fullItemDisplay.hbs --}}
+
+<div class="form-group">
+    <label for="fullItemTitle">Title</label>
+    <input type="text" id="fullItemTitle" name="title" value="{{title}}" placeholder="Enter a title for this display">
+</div>
+
+<div class="form-group">
+    <label for="itemLayout">Item Layout</label>
+    <select id="itemLayout" name="itemLayout">
+        <option value="vertical" {{#if (eq itemLayout "vertical")}}selected{{/if}}>Vertical</option>
+        <option value="horizontal" {{#if (eq itemLayout "horizontal")}}selected{{/if}}>Horizontal</option>
+        <option value="grid2" {{#if (eq itemLayout "grid2")}}selected{{/if}}>Grid of 2 columns</option>
+        <option value="grid3" {{#if (eq itemLayout "grid3")}}selected{{/if}}>Grid of 3 columns</option>
+        <option value="grid4" {{#if (eq itemLayout "grid4")}}selected{{/if}}>Grid of 4 columns</option>
+        <option value="grid5" {{#if (eq itemLayout "grid5")}}selected{{/if}}>Grid of 5 columns</option>
+        <option value="grid6" {{#if (eq itemLayout "grid6")}}selected{{/if}}>Grid of 6 columns</option>
+
+    </select>
+</div>
+
+<div class="form-group">
+    <input type="checkbox" id="showItemHeader" name="showItemHeader" {{#if showItemHeader}}checked{{/if}}>
+    <label for="showItemHeader">Show Item Header</label>
+</div>
+
+<div class="form-group">
+    <input type="checkbox" id="collapsibleItems" name="collapsibleItems" {{#if collapsibleItems}}checked{{/if}}>
+    <label for="collapsibleItems">Collapsible Items</label>
+</div>
+
+<div class="form-group">
+    <input type="checkbox" id="defaultItemCollapsed" name="defaultItemCollapsed" {{#if defaultItemCollapsed}}checked{{/if}} {{#unless collapsibleItems}}disabled{{/unless}}>
+    <label for="defaultItemCollapsed" {{#unless collapsibleItems}}class="disabled"{{/unless}}>Default Items Collapsed</label>
+    <p class="notes">If items are collapsible, check this to have them start collapsed.</p>
+</div>
+
+<div class="form-group">
+    <input type="checkbox" id="showItemControls" name="showItemControls" {{#if showItemControls}}checked{{/if}}>
+    <label for="showItemControls">Show Item Controls</label>
+</div>
+
+<div class="form-group">
+    <input type="checkbox" id="hideEmpty" name="hideEmpty" {{#if hideEmpty}}checked{{/if}}>
+    <label for="hideEmpty">Hide Empty Sections</label>
+</div>
+
+<div class="form-group">
+    <label for="itemFilterFormula">Item Filter Formula</label>
+    <input type="text" id="itemFilterFormula" name="itemFilterFormula" value="{{itemFilterFormula}}" placeholder="e.g., @item.type === 'weapon'">
+    <p class="notes">Use a formula to filter items. The @item variable represents the item data.</p>
+</div>
+
+<div class="form-group">
+    <label>Filter by Template</label>
+    {{#if availableTemplates}}
+        {{#each availableTemplates}}
+        <div class="form-fields">
+            <input type="checkbox" id="templateFilter-{{this.id}}" name="templateFilter" value="{{this.id}}" {{#if this.checked}}checked{{/if}}>
+            <label for="templateFilter-{{this.id}}">{{this.name}}</label>
+        </div>
+        {{/each}}
+    {{else}}
+        <p class="notes">No item templates found.</p>
+    {{/if}}
+    <p class="notes">Select which item templates to display. If none are selected, all are displayed.</p>
+</div>
+
+<script>
+    // Logic to enable/disable defaultItemCollapsed based on collapsibleItems
+    (function() {
+        const collapsibleCheckbox = document.getElementById('collapsibleItems');
+        const defaultCollapsedCheckbox = document.getElementById('defaultItemCollapsed');
+        const defaultCollapsedLabel = document.querySelector('label[for="defaultItemCollapsed"]');
+
+        function toggleDefaultCollapsed() {
+            if (collapsibleCheckbox.checked) {
+                defaultCollapsedCheckbox.disabled = false;
+                if (defaultCollapsedLabel) defaultCollapsedLabel.classList.remove('disabled');
+            } else {
+                defaultCollapsedCheckbox.disabled = true;
+                defaultCollapsedCheckbox.checked = false; // Optionally uncheck when disabled
+                if (defaultCollapsedLabel) defaultCollapsedLabel.classList.add('disabled');
+            }
+        }
+
+        if (collapsibleCheckbox && defaultCollapsedCheckbox) {
+            collapsibleCheckbox.addEventListener('change', toggleDefaultCollapsed);
+            // Initial state
+            toggleDefaultCollapsed();
+        }
+    })();
+</script>
