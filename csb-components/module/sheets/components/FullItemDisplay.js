@@ -12,14 +12,14 @@ Hooks.on('init', async () => {
   
   try {
     // Import all dependencies first
-    Container = (await import('/jotunheim/systems/custom-system-builder/module/sheets/components/Container.js')).default;
+    Container = (await import('/systems/custom-system-builder/module/sheets/components/Container.js')).default;
     
-    const utils = await import('/jotunheim/systems/custom-system-builder/module/utils.js');
+    const utils = await import('/systems/custom-system-builder/module/utils.js');
     castToPrimitive = utils.castToPrimitive;
     
-    Formula = (await import('/jotunheim/systems/custom-system-builder/module/formulas/Formula.js')).default;
+    Formula = (await import('/systems/custom-system-builder/module/formulas/Formula.js')).default;
     
-    const itemModule = await import('/jotunheim/systems/custom-system-builder/module/documents/item.js');
+    const itemModule = await import('/systems/custom-system-builder/module/documents/item.js');
     CustomItem = itemModule.CustomItem;
     
     console.log('[FullItemDisplay] All dependencies imported successfully');
@@ -622,7 +622,7 @@ Hooks.once('init', async () => {
   try {
     // CustomItem should already be imported above, but just in case
     if (!CustomItem) {
-      const itemModule = await import('/jotunheim/systems/custom-system-builder/module/documents/item.js');
+      const itemModule = await import('/systems/custom-system-builder/module/documents/item.js');
       CustomItem = itemModule.CustomItem;
     }
     
