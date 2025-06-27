@@ -1,7 +1,7 @@
 {
   "id": "full-item-display-forge",
   "title": "Full Item Display-Forge",
-  "version": "0.1.1",
+  "version": "0.0.0",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
@@ -16,8 +16,6 @@
 		"verified": "4.6.4"
 		}
       }
-    ],
-    "recommends": [
     ]
   },
   "authors": [
@@ -35,5 +33,5 @@
 	],
   "url": "https://github.com/Rohendor/FullItemDisplay-Forge",
   "manifest": "https://github.com/Rohendor/FullItemDisplay-Forge/releases/latest/download/module.json",
-  "download": "https://github.com/Rohendor/FullItemDisplay-Forge/releases/latest/download/FullItemDisplay.zip"
+  "download": "https://github.com/Rohendor/FullItemDisplay-Forge/releases/latest/download/FullItemDisplayForge.zip"
 }
