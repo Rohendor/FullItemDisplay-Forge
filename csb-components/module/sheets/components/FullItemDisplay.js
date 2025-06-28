@@ -622,7 +622,7 @@ Hooks.once('init', async () => {
   try {
     // CustomItem should already be imported above, but just in case
     if (!CustomItem) {
-      const itemModule = await import('/systems/custom-system-builder/module/documents/item.js');
+      const itemModule = await import('../../../../modules/documents/item.js');
       CustomItem = itemModule.CustomItem;
     }
     
